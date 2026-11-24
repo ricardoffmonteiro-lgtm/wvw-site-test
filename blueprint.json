@@ -1,0 +1,12 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "preferredVersions": { "php": "8.2", "wp": "latest" },
+  "features": { "networking": true },
+  "steps": [
+    { "step": "setSiteOptions", "options": { "blogname": "We Visit Worlds", "permalink_structure": "/%postname%/" } },
+    { "step": "installPlugin", "pluginData": { "resource": "url", "url": "https://raw.githubusercontent.com/ricardoffmonteiro-lgtm/wvw-site-test/main/wvw-core.zip" }, "options": { "activate": true } },
+    { "step": "installTheme", "themeData": { "resource": "url", "url": "https://raw.githubusercontent.com/ricardoffmonteiro-lgtm/wvw-site-test/main/wevisitworlds.zip" }, "options": { "activate": true } },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; wvw_seed( true ); flush_rewrite_rules();" }
+  ]
+}
